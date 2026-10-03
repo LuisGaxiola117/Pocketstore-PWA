@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="description" content="Catalogo offline de productos para PocketStore" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>PocketStore | Catalogo offline</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand" aria-label="PocketStore">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>PocketStore</span>
+      </div>
+      <div class="connection-status" id="connection-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="connection-label">Comprobando conexion...</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Catalogo de bolsillo</p>
+        <h1 id="page-title">Compra con calma,<br /><em>incluso sin señal.</em></h1>
+        <p class="intro-copy">Explora una seleccion de productos guardada en tu dispositivo.</p>
+      </section>
+
+      <section class="toolbar" aria-label="Controles del catalogo">
+        <label class="search-box">
+          <span class="sr-only">Buscar productos</span>
+          <span aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="Buscar en el catalogo" autocomplete="off" />
+        </label>
+        <button class="refresh-button" id="refresh-button" type="button">
+          <span aria-hidden="true">↻</span>
+          Actualizar
+        </button>
+      </section>
+
+      <div class="catalog-meta">
+        <h2>Productos destacados</h2>
+        <span id="product-count">Cargando...</span>
+      </div>
+
+      <section id="product-grid" class="product-grid" aria-live="polite" aria-busy="true"></section>
+      <p id="empty-state" class="empty-state" hidden>No encontramos productos con esa busqueda.</p>
+    </main>
+
+    <footer class="app-footer">
+      <span>© 2026 PocketStore</span>
+      <span class="footer-note">Hecho para funcionar offline</span>
+    </footer>
+
+    <template id="product-template">
+      <article class="product-card">
+        <div class="product-image-wrap">
+          <img class="product-image" alt="" loading="lazy" />
+          <span class="product-category"></span>
+        </div>
+        <div class="product-content">
+          <p class="product-brand">Pocket selection</p>
+          <h3 class="product-title"></h3>
+          <div class="product-bottom">
+            <strong class="product-price"></strong>
+            <span class="product-rating"></span>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js?v=4" defer></script>
+  </body>
+</html>
